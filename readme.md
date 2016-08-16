@@ -2,9 +2,7 @@
 
 ## Install
 
-```sh
-$ npm install express-response-transformer-middleware
-```
+Todo: publish 
 
 ## Setup
 
@@ -13,6 +11,7 @@ $ npm install express-response-transformer-middleware
 2.Apply middleware and set location (absolute path is required) to your transformer folder
 
 ```js
+var transformer = require('express-response-transformer-middleware')
 var app = express();
 app.use(transformer(__dirname + '/transformers'));
 ```
@@ -31,7 +30,7 @@ app.get('/', function (req, res) {
 3.2 Handling array responses
 ```js
 app.get('/', function (req, res) {
-  res.transformItem('SUCCESS_MESSAGE', 'TransformerName', [
+  res.transformItems('SUCCESS_MESSAGE', 'TransformerName', [
   {
     example_data: "data"
   },
@@ -43,4 +42,4 @@ app.get('/', function (req, res) {
 ```
 
 ##Todo:
-1. Improve this documentation
+1. Improve documentation
