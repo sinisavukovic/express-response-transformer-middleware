@@ -5,6 +5,10 @@
   "author": "Sinisa Vukovic <sinisasu@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinisavukovic/express-response-transformer-middleware"
+  },
   "keywords": [
     "express",
     "node",

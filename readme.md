@@ -2,7 +2,9 @@
 
 ## Install
 
-Todo: publish 
+```sh
+    npm i express-response-transformer-middleware
+```
 
 ## Setup
 
@@ -40,6 +42,3 @@ app.get('/', function (req, res) {
   ]);
 });
 ```
-
-##Todo:
-1. Improve documentation
