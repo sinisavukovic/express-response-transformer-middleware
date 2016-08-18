@@ -1,7 +1,7 @@
 {
   "name": "express-response-transformer-middleware",
   "description": "Express middleware for transforming responses easier",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Sinisa Vukovic <sinisasu@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
@@ -29,6 +29,9 @@
     "istanbul": "^0.4.4",
     "mocha": "^3.0.2",
     "supertest": "^2.0.0"
+  },
+  "engines": {
+    "node": ">= 0.12"
   },
   "scripts": {
     "build": "./node_modules/.bin/babel src -d lib -b regenerator",
