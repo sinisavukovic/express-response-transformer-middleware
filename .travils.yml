@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "0.8"
+  - "0.10"
+  - "0.12"
+  - "1.8"
+  - "2.5"
+  - "3.3"
+  - "4.4"
+  - "5.11"
+  - "6.0"
+  - "6.1"
+script: "npm run-script test-travis"
+after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
