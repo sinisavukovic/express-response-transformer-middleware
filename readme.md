@@ -1,4 +1,4 @@
-# Express response transformer middleware
+# Express response transformer middleware [![Build Status](https://travis-ci.org/sinisavukovic/express-response-transformer-middleware.svg?branch=master)](https://travis-ci.org/sinisavukovic/express-response-transformer-middleware)
 
 ## Install
 
