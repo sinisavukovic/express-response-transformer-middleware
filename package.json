@@ -1,7 +1,7 @@
 {
   "name": "express-response-transformer-middleware",
   "description": "Express middleware for transforming responses easier",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Sinisa Vukovic <sinisasu@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
