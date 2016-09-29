@@ -1,0 +1,10 @@
+{
+  "name": "response-transformer-middleware-example",
+  "version": "0.1.0",
+  "description": "Response transformer middle example app",
+  "main": "server.js",
+  "author": "Sinisa Vukovic <sinisasu@gmail.com>",
+  "devDependencies": {
+    "babel-cli": "^6.16.0"
+  }
+}

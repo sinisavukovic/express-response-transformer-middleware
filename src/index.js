@@ -1,28 +1,27 @@
 import fs from 'fs';
 import TransformerError from './TransformerError';
 
-export default function ($location) {
-  if (typeof $location === 'undefined') {
-    throw new TransformerError('TRANSFORMER_LOCATION_NOT_SET', 500)
+export default function ($transformers) {
+  if (typeof $transformers === 'undefined') {
+    throw new TransformerError('TRANSFORMERS_NOT_SET', 500)
   }
+
   return function transformer(req, res, next) {
     res.transformItem = (message, transformerType, data) => {
-      const location = `${$location}/${transformerType}.js`;
       let body = [];
-      if (data.constructor == Array) {
+      if (typeof data !== 'undefined' && data.constructor == Array) {
         throw new TransformerError('DATA_NEEDS_TO_BE_AN_OBJECT', 500)
       }
 
-      if (null === transformerType) {
-        body = data;
+      //If transformer type is not a string, transformer is not defined so will dump whatever is in the second argument
+      if (typeof transformerType !== 'string') {
+        body = transformerType;
       } else {
-        try {
-          fs.accessSync(location, fs.F_OK);
-        } catch (e) {
-          throw new TransformerError('TRANSFORMER_NOT_FOUND', 404)
+        if (!$transformers.hasOwnProperty(transformerType)) {
+          throw new TransformerError('TRANSFORMER_NOT_FOUND', 404);
         }
 
-        body = require(location).default(data);
+        body = $transformers[ transformerType ].default(data);
       }
 
       return res.status(200).json({
@@ -31,23 +30,25 @@ export default function ($location) {
       });
     };
     res.transformItems = (message, transformerType, data) => {
-      const location = `${$location}/${transformerType}.js`;
       let body = [];
-      if (data.constructor !== Array) {
+      if (typeof data !== 'undefined' && data.constructor !== Array) {
         throw new TransformerError('DATA_NEEDS_TO_BE_AN_ARRAY', 500)
       }
 
-      try {
-        fs.accessSync(location, fs.F_OK);
-      } catch (e) {
+      if (!$transformers.hasOwnProperty(transformerType)) {
         throw new TransformerError('TRANSFORMER_NOT_FOUND', 404);
       }
 
-      const transformer = require(location).default;
+      const transformer = $transformers[ transformerType ].default;
 
-      data.forEach((item) => {
-        body.push(transformer(item));
-      });
+      //If transformer type is not a string, transformer is not defined so will dump whatever is in the second argument
+      if (typeof transformerType !== 'string') {
+        body = transformerType;
+      } else {
+        data.forEach((item) => {
+          body.push(transformer(item));
+        });
+      }
 
       return res.status(200).json({
         "message": message,
