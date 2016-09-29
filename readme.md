@@ -3,7 +3,7 @@
 ## Install
 
 ```sh
-    npm i express-response-transformer-middleware
+npm i express-response-transformer-middleware
 ```
 
 ## NOTE
@@ -12,7 +12,7 @@ If you're using version 0.1.1 there are breaking changes in 0.2.0
 
 ## Setup
 
-1. Create a transformer: 
+1.Create a transformer: 
 ```js
 export default function (data) {
 	return {...}
@@ -22,7 +22,7 @@ export default function (data) {
 **Note: Transformer must accept data and must return object**
 
 
-2. Apply middleware and require transformer files you want to use
+2.Apply middleware and require transformer files you want to use
 
 ```js
 var transformer = require('express-response-transformer-middleware')
@@ -34,7 +34,8 @@ app.use(transformer({
 
 ## Calling transformers 
 
-1. Handling object responses
+1.Handling object responses
+
 ```js
 app.get('/', function (req, res) {
   res.transformItem('SUCCESS_MESSAGE', 'TransformerName', {
@@ -43,7 +44,7 @@ app.get('/', function (req, res) {
 });
 ```
 
-2. Handling array responses
+2.Handling array responses
 ```js
 app.get('/', function (req, res) {
   res.transformItems('SUCCESS_MESSAGE', 'TransformerName', [
@@ -57,7 +58,7 @@ app.get('/', function (req, res) {
 });
 ```
 
-3. Handling response without transformer
+3.Handling response without transformer
 
 ```js
 app.get('/', function (req, res) {
@@ -71,11 +72,4 @@ you can pass array as well
 app.get('/', function (req, res) {
   res.transformItem('SUCCESS_MESSAGE', [...]);
 });
-```
-
-##Example app
-
-```js
-$ npm install
-$ ./node_modules/babel-cli/bin/babel-node.js server.js or babel-node if you have it installed globally
 ```
